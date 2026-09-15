@@ -101,7 +101,9 @@ function PaletteRow(props: {
         ) : null}
       </View>
       {props.index < 9 ? (
-        <Text className="text-sm text-foreground-muted">⌘{props.index + 1}</Text>
+        <Text className="w-8 shrink-0 text-right text-sm tabular-nums text-foreground-muted">
+          ⌘{props.index + 1}
+        </Text>
       ) : null}
     </RowPressable>
   );
