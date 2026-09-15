@@ -16,7 +16,6 @@ import {
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import { GlassSurface } from "../../components/GlassSurface";
-import { useUniwindTheme } from "../../lib/useUniwindTheme";
 import { RowPressable } from "../../components/RowPressable";
 import { AppText as Text } from "../../components/AppText";
 import { SymbolView, type AppSymbolName } from "../../components/AppSymbol";
@@ -115,7 +114,6 @@ export function CommandPalette(props: {
   readonly onCommand: (command: HardwareKeyboardCommand) => void;
 }) {
   const navigation = useNavigation();
-  const colors = useUniwindTheme();
   const { selectThread } = useAdaptiveWorkspaceLayout();
   const runCommand = props.onCommand;
   const projects = useProjects();
@@ -399,7 +397,6 @@ export function CommandPalette(props: {
               accessibilityViewIsModal
               className="bg-sheet/70"
               tintColorClassName="accent-sheet/20"
-              fallbackColor={colors["--color-sheet-solid"]}
               style={{
                 width: Math.min(600, width - 32),
                 height: Math.min(520, height - 80),
