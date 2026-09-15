@@ -163,11 +163,11 @@ export function useVoiceInputController(input: {
     // Auto-lock backgrounds the app, which discards the take. Low Power Mode
     // shortens the lock timer to 30 seconds, well inside the recording limit.
     if (!isBusy) return;
-    void activateKeepAwakeAsync(VOICE_KEEP_AWAKE_TAG).catch(() => {
-      // Keep-awake is best effort. Recording proceeds without it.
-    });
+    // Keep-awake is best effort. Recording proceeds without it, and releasing
+    // rejects on Android once the Activity is gone.
+    void activateKeepAwakeAsync(VOICE_KEEP_AWAKE_TAG).catch(() => {});
     return () => {
-      void deactivateKeepAwake(VOICE_KEEP_AWAKE_TAG);
+      void deactivateKeepAwake(VOICE_KEEP_AWAKE_TAG).catch(() => {});
     };
   }, [isBusy]);
 
