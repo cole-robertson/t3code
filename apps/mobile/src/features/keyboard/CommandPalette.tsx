@@ -18,7 +18,6 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { RowPressable } from "../../components/RowPressable";
 import { AppText as Text } from "../../components/AppText";
 import { SymbolView, type AppSymbolName } from "../../components/AppSymbol";
-import { GlassSurface } from "../../components/GlassSurface";
 import { scopedProjectKey, scopedThreadKey } from "../../lib/scopedEntities";
 import { T3KeyboardCommands } from "../../native/T3KeyboardCommands";
 import { useProjects, useThreadShell, useThreadShells } from "../../state/entities";
@@ -393,8 +392,9 @@ export function CommandPalette(props: {
               accessibilityLabel="Close command palette"
               onPress={() => close()}
             />
-            <GlassSurface
+            <View
               accessibilityViewIsModal
+              className="overflow-hidden border border-border bg-sheet shadow-lg shadow-adaptive-black-a10-a25"
               style={{
                 width: Math.min(600, width - 32),
                 height: Math.min(520, height - 80),
@@ -463,7 +463,7 @@ export function CommandPalette(props: {
                   />
                 )}
               />
-            </GlassSurface>
+            </View>
           </KeyboardAvoidingView>
         </T3KeyboardCommands>
       </GestureHandlerRootView>
